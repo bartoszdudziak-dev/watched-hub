@@ -1,6 +1,6 @@
 import { useTheme } from '@/context/ThemeContext';
-import lightLogo from '../../../assets/images/logo-light.png';
-import darkLogo from '../../../assets/images/logo-dark.png';
+import lightLogo from '../../assets/images/logo-light.png';
+import darkLogo from '../../assets/images/logo-dark.png';
 
 function Logo() {
   const { theme } = useTheme();
