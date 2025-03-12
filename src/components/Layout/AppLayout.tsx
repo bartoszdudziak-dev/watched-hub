@@ -5,7 +5,7 @@ import Main from './Main';
 
 function AppLayout() {
   return (
-    <div className="min-h-dvh">
+    <div className="grid min-h-dvh grid-rows-[auto_1fr]">
       <Header />
 
       <Main>

@@ -1,10 +1,17 @@
+import Loader from '@/components/Loader/Loader';
+import Posts from '@/components/Posts/Posts';
 import { usePosts } from '@/hooks/usePlans';
 
 function Movies() {
-  const { posts } = usePosts('movies');
-  console.log(posts);
+  const { posts: movies, isPending, isError } = usePosts('movies');
 
-  return <div>Movies</div>;
+  if (isPending) return <Loader />;
+
+  if (isError) return <p>Error</p>;
+
+  if (movies && movies.length > 0) return <Posts posts={movies} />;
+
+  return <p>No results</p>;
 }
 
 export default Movies;

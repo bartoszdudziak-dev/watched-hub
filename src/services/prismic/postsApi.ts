@@ -18,6 +18,7 @@ export const getPosts = async (category: string) => {
 
     const response = await prismicClient.getAllByType('post', {
       filters: createFilters(categoryId),
+      fetchLinks: ['category.name', 'category.uid'],
     });
 
     return response;

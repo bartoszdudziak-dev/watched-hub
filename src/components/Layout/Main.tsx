@@ -5,7 +5,7 @@ type MainProps = { children: ReactNode };
 
 function Main({ children }: MainProps) {
   return (
-    <main className="py-10">
+    <main className="px-6 py-10">
       <Container>{children}</Container>
     </main>
   );
