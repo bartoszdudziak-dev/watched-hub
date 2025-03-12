@@ -1,0 +1,51 @@
+{
+  "Main": {
+    "uid": {
+      "type": "UID",
+      "config": {
+        "label": "ID"
+      }
+    },
+    "title": {
+      "type": "Text",
+      "config": {
+        "label": "Title"
+      }
+    },
+    "poster": {
+      "type": "Image",
+      "config": {
+        "constraint": {},
+        "thumbnails": [],
+        "label": "Poster"
+      }
+    },
+    "category": {
+      "type": "Link",
+      "config": {
+        "select": "document",
+        "customtypes": ["category"],
+        "label": "Category"
+      }
+    },
+    "release_date": {
+      "type": "Date",
+      "config": {
+        "label": "Release Date"
+      }
+    },
+    "watched_date": {
+      "type": "Date",
+      "config": {
+        "label": "Watched Date"
+      }
+    },
+    "rate": {
+      "type": "Select",
+      "config": {
+        "options": ["1", "2", "3", "4", "5"],
+        "label": "Rate"
+      }
+    }
+  }
+}

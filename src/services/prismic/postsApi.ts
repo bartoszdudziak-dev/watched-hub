@@ -3,22 +3,37 @@ import * as prismic from '@prismicio/client';
 
 export const getCategoryByUID = async (uid: string) => {
   try {
+    if (uid === 'all' || uid === '') return undefined;
+
     const category = await prismicClient.getByUID('category', uid);
     return category.id;
   } catch (error) {
-    console.error('Błąd pobierania kategorii:', error);
+    console.error(error);
   }
 };
 
-export const getPosts = async () => {
+export const getPosts = async (category: string) => {
   try {
-    const category = (await getCategoryByUID('tv-series')) || '';
+    const categoryId = await getCategoryByUID(category);
+
     const response = await prismicClient.getAllByType('post', {
-      filters: [prismic.filter.at('my.post.category', category)],
+      filters: createFilters(categoryId),
     });
-    console.log(response);
+
     return response;
   } catch (error) {
     console.error(error);
   }
 };
+
+type Filters = string | string[] | undefined;
+
+function createFilters(category?: string): Filters {
+  const filters = [];
+
+  if (category) {
+    filters.push(prismic.filter.at('my.post.category', category));
+  }
+
+  return filters;
+}
