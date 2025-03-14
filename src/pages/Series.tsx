@@ -1,5 +1,5 @@
 import Posts from '@/components/Posts/Posts';
-import { usePosts } from '@/hooks/usePlans';
+import { usePosts } from '@/hooks/usePosts';
 import { Loader } from 'lucide-react';
 
 function Series() {

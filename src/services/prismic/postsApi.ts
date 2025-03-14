@@ -12,14 +12,29 @@ export const getCategoryByUID = async (uid: string) => {
   }
 };
 
-export const getPosts = async (category: string) => {
+export const getPosts = async ({
+  category = 'all',
+  title,
+  rate,
+  order,
+  sort,
+}: {
+  category?: string;
+  title: string;
+  rate: string[];
+  order: 'asc' | 'desc';
+  sort: string;
+}) => {
   try {
     const categoryId = await getCategoryByUID(category);
 
     const response = await prismicClient.getAllByType('post', {
-      filters: createFilters(categoryId),
+      filters: createFilters({ categoryId, title, rate }),
+      orderings: createOrderings({ sort, order }),
       fetchLinks: ['category.name', 'category.uid'],
     });
+
+    console.log(sort, order);
 
     return response;
   } catch (error) {
@@ -29,12 +44,32 @@ export const getPosts = async (category: string) => {
 
 type Filters = string | string[] | undefined;
 
-function createFilters(category?: string): Filters {
+function createFilters({
+  categoryId,
+  title,
+  rate,
+}: {
+  categoryId?: string;
+  title: string;
+  rate: string[];
+}): Filters {
   const filters = [];
 
-  if (category) {
-    filters.push(prismic.filter.at('my.post.category', category));
+  if (categoryId) {
+    filters.push(prismic.filter.at('my.post.category', categoryId));
+  }
+
+  if (title) {
+    filters.push(prismic.filter.fulltext('my.post.title', title));
+  }
+
+  if (rate) {
+    filters.push(prismic.filter.any('my.post.rate', rate));
   }
 
   return filters;
+}
+
+function createOrderings({ sort, order }: { sort: string; order: 'asc' | 'desc' }) {
+  return { field: `my.post.${sort}`, direction: order };
 }

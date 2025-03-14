@@ -14,7 +14,7 @@ type SearchProviderProps = {
 export type SearchConfig = {
   query: string;
   order: 'asc' | 'desc';
-  sort: 'title' | 'rate' | 'watched_date' | 'released_date';
+  sort: 'title' | 'rate' | 'watched_date' | 'release_date';
   rate: number[];
 };
 
@@ -54,7 +54,7 @@ export function SearchProvider({ children }: SearchProviderProps) {
     searchParams.set('title', query);
     searchParams.set('sort', sort);
     searchParams.set('order', order);
-    searchParams.set('rates', rate.join(','));
+    searchParams.set('rate', rate.join(','));
 
     setSearchParams(searchParams);
   };

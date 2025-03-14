@@ -1,6 +1,6 @@
 import Loader from '@/components/Loader/Loader';
 import Posts from '@/components/Posts/Posts';
-import { usePosts } from '@/hooks/usePlans';
+import { usePosts } from '@/hooks/usePosts';
 
 function Home() {
   const { posts, isPending, isError } = usePosts();
