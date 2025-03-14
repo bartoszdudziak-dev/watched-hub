@@ -1,7 +1,8 @@
 import Header from './Header';
 import { Outlet } from 'react-router';
-import SearchBox from '../SearchBox/SearchBox';
 import Main from './Main';
+import SearchBar from '../Search/SearchBar';
+import { SearchProvider } from '@/context/SearchContext';
 
 function AppLayout() {
   return (
@@ -9,7 +10,9 @@ function AppLayout() {
       <Header />
 
       <Main>
-        <SearchBox />
+        <SearchProvider>
+          <SearchBar />
+        </SearchProvider>
         <Outlet />
       </Main>
     </div>

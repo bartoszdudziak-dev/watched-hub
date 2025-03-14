@@ -12,9 +12,8 @@ function App() {
         <Route index element={<Home />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/series" element={<Series />} />
-        <Route path="/series/:id" element={<Review />} />
-        <Route path="/movies/:id" element={<Review />} />
       </Route>
+      <Route path="/review/:id" element={<Review />} />
     </Routes>
   );
 }

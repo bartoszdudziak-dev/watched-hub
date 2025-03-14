@@ -1,10 +1,10 @@
 import { PostDocument } from '@/types/types.generated';
-import { Card, CardContent, CardFooter, CardHeader } from '../../ui/card';
-import PostRate from './PostRate';
+import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
 import { formatDate } from '@/helpers/formatDate';
 import { asDate, ContentRelationshipField } from '@prismicio/client';
 import { buttonVariants } from '@/components/ui/button';
 import { Link } from 'react-router';
+import Rating from '../Rating/Rating';
 
 // Not perfect solution // content relationship typing problem
 type CategoryExtendType = ContentRelationshipField<'category'> & {
@@ -22,7 +22,7 @@ function Post({
   },
 }: PostProps) {
   const {
-    data: { name: categoryName, uid: categoryId },
+    data: { name: categoryName },
   } = category as CategoryExtendType;
 
   return (
@@ -35,7 +35,7 @@ function Post({
         />
       </CardHeader>
       <CardContent>
-        <h3 className="mb-4 border-b-1 text-xl font-bold tracking-wider uppercase">{title}</h3>
+        <h3 className="mb-4 border-b-1 text-lg font-bold tracking-wider uppercase">{title}</h3>
         <div className="divide-y-1 text-sm">
           <div className="grid grid-cols-2 py-1">
             <span>Released on</span>
@@ -52,9 +52,9 @@ function Post({
         </div>
       </CardContent>
       <CardFooter className="flex items-center justify-between">
-        <PostRate rate={Number(rate)} maxRate={5} />
+        <Rating rate={Number(rate)} maxRate={5} size={4} />
 
-        <Link to={`/${categoryId}/${postId}`} className={buttonVariants({ variant: 'outline' })}>
+        <Link to={`/review/${postId}`} className={buttonVariants({ variant: 'outline' })}>
           See more
         </Link>
       </CardFooter>
