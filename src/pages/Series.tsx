@@ -1,6 +1,6 @@
+import Loader from '@/components/Loader/Loader';
 import Posts from '@/components/Posts/Posts';
 import { usePosts } from '@/hooks/usePosts';
-import { Loader } from 'lucide-react';
 
 function Series() {
   const { posts: series, isPending, isError } = usePosts('series');
