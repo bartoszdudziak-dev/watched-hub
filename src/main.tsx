@@ -11,7 +11,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
-        <BrowserRouter basename="/task-react-routing">
+        <BrowserRouter basename="/watched-hub">
           <App />
         </BrowserRouter>
       </ThemeProvider>
