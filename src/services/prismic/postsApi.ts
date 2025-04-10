@@ -34,8 +34,6 @@ export const getPosts = async ({
       fetchLinks: ['category.name', 'category.uid'],
     });
 
-    console.log(sort, order);
-
     return response;
   } catch (error) {
     console.error(error);
