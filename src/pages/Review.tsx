@@ -1,9 +1,26 @@
-import { useParams } from 'react-router';
+import Container from '@/components/Layout/Container';
+import Header from '@/components/Layout/Header';
+import Loader from '@/components/Loader/Loader';
+import PostReview from '@/components/Posts/PostReview';
+
+import { usePost } from '@/hooks/usePost';
 
 function Review() {
-  const { id } = useParams();
+  const { post, isError, isPending } = usePost();
 
-  return <div>{id}</div>;
+  return (
+    <div>
+      <Header />
+
+      <Container>
+        <div className="py-10">
+          {isPending && <Loader />}
+          {isError && <p>Error</p>}
+          {post && <PostReview post={post} />}
+        </div>
+      </Container>
+    </div>
+  );
 }
 
 export default Review;

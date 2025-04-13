@@ -4,7 +4,7 @@ import NavItem from './NavItem';
 function Navigation() {
   return (
     <nav>
-      <ul className="flex gap-10">
+      <ul className="flex gap-5 lg:gap-10">
         {NAVIGATION.map(({ label, path }) => (
           <NavItem path={path} key={path}>
             {label}

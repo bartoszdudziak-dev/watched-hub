@@ -11,9 +11,15 @@ function ThemeSwitch() {
 
   return (
     <div className="flex items-center gap-2">
-      <SunIcon size={20} className={`${theme === 'dark' ? 'opacity-50' : 'opacity-100'}`} />
+      <SunIcon
+        size={20}
+        className={`${theme === 'dark' ? 'opacity-50' : 'opacity-100'} hidden sm:block`}
+      />
       <Switch onClick={toggleTheme} checked={theme === 'dark'} />
-      <MoonIcon size={20} className={`${theme === 'light' ? 'opacity-50' : 'opacity-100'}`} />
+      <MoonIcon
+        size={20}
+        className={`${theme === 'light' ? 'opacity-50' : 'opacity-100'} hidden sm:block`}
+      />
     </div>
   );
 }

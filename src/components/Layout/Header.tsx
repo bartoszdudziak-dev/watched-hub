@@ -7,9 +7,9 @@ function Header() {
   return (
     <header className="border-b-1 p-6">
       <Container>
-        <div className="flex items-center gap-10">
+        <div className="flex items-center justify-between lg:gap-10">
           <Logo />
-          <div className="mr-4 ml-auto">
+          <div className="mr-4 lg:ml-auto">
             <Navigation />
           </div>
           <ThemeSwitch />

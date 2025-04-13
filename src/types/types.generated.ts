@@ -100,6 +100,17 @@ interface PostDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	rate: prismic.SelectField<"1" | "2" | "3" | "4" | "5">;
+	
+	/**
+	 * review field in *post*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: post.review
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	review: prismic.RichTextField;
 }
 
 /**
@@ -113,7 +124,20 @@ interface PostDocumentData {
  */
 export type PostDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<Simplify<PostDocumentData>, "post", Lang>;
 
-export type AllDocumentTypes = CategoryDocument | PostDocument;
+interface ReviewDocumentData {}
+
+/**
+ * review document from Prismic
+ *
+ * - **API ID**: `review`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ReviewDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<Simplify<ReviewDocumentData>, "review", Lang>;
+
+export type AllDocumentTypes = CategoryDocument | PostDocument | ReviewDocument;
 
 declare module "@prismicio/client" {
 	interface CreateClient {
@@ -134,6 +158,8 @@ declare module "@prismicio/client" {
 			CategoryDocumentData,
 			PostDocument,
 			PostDocumentData,
+			ReviewDocument,
+			ReviewDocumentData,
 			AllDocumentTypes
 		}
 	}
